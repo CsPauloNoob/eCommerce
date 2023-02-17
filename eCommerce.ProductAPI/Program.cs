@@ -1,4 +1,7 @@
+using AutoMapper;
+using eCommerce.ProductAPI.Config;
 using eCommerce.ProductAPI.Models.Context;
+using eCommerce.ProductAPI.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 namespace eCommerce.ProductAPI
@@ -17,6 +20,14 @@ namespace eCommerce.ProductAPI
             builder.Services.AddDbContext<MySQLContext>(
                 options => options.UseMySql(
                     connectionString, new MySqlServerVersion(new Version(8, 0, 32))));
+
+
+            IMapper mapper = MapConfig.RegisterMaps().CreateMapper();
+            builder.Services.AddSingleton(mapper);
+            builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
+            builder.Services.AddScoped<IProductRepository, ProductRepository>();
+
 
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
