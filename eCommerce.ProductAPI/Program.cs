@@ -3,6 +3,7 @@ using eCommerce.ProductAPI.Config;
 using eCommerce.ProductAPI.Models.Context;
 using eCommerce.ProductAPI.Repositories;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.OpenApi.Models;
 
 namespace eCommerce.ProductAPI
 {
@@ -30,7 +31,8 @@ namespace eCommerce.ProductAPI
 
 
             builder.Services.AddEndpointsApiExplorer();
-            builder.Services.AddSwaggerGen();
+            builder.Services.AddSwaggerGen( c =>
+            c.SwaggerDoc("v1", new OpenApiInfo { Title = "GeekShopping.ProductAPI", Version = "v1" }));
 
             var app = builder.Build();
 

@@ -3,6 +3,7 @@ namespace eCommerce.ProductAPI.Data.ValueObjects
 {
     public class ProductVO
     {
+        public long Id { get; set; }
 
         public string Name { get; set; }
 
