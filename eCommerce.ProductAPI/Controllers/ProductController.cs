@@ -66,6 +66,5 @@ namespace eCommerce.ProductAPI.Controllers
             if (!status) return BadRequest();
             return Ok(status);
         }
-
     }
 }
