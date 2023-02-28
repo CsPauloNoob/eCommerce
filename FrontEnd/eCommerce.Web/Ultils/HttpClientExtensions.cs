@@ -21,10 +21,10 @@ namespace eCommerce.Web.Ultils
             var dataAsString = await response.Content.
                 ReadAsStringAsync().ConfigureAwait(false);
 
-#pragma warning disable CS8603 // Possível retorno de referência nula.
+            #pragma warning disable CS8603 // Possível retorno de referência nula.
             return JsonSerializer.Deserialize<T>(dataAsString, 
                 new JsonSerializerOptions { PropertyNameCaseInsensitive = true});
-#pragma warning restore CS8603 // Possível retorno de referência nula.
+            #pragma warning restore CS8603 // Possível retorno de referência nula.
 
         }
 

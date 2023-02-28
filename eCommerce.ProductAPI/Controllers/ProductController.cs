@@ -41,10 +41,10 @@ namespace eCommerce.ProductAPI.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<ProductVO>> Create(ProductVO vo)
+        public async Task<ActionResult<ProductVO>> Create([FromBody] ProductVO vo)
         {
             if(vo == null) return BadRequest();
-
+            
             var product = await _repository.Create(vo);
             return Ok(product);
         }
