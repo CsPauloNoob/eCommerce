@@ -2,6 +2,7 @@
 using eCommerce.Web.Services.IServices;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using System.Reflection;
 
 namespace eCommerce.Web.Controllers
 {
@@ -21,10 +22,12 @@ namespace eCommerce.Web.Controllers
             return View(products);
         }
 
+
         public async Task<IActionResult> ProductCreate()
         {
             return View();
         }
+
 
         [HttpPost]
         public async Task<IActionResult> ProductCreate(ProductModel model)
@@ -36,6 +39,46 @@ namespace eCommerce.Web.Controllers
                     nameof(ProductIndex));
             }
 
+            return View(model);
+        }
+
+
+        public async Task<IActionResult> ProductUpdate(long id)
+        {
+            var model = await _productService.FindProductById(id);
+            if(model != null) return View(model);
+
+            return NotFound();
+        }
+
+
+        [HttpPost]
+        public async Task<IActionResult> ProductUpdate(ProductModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var response = _productService.UpdateProduct(model);
+                if (response != null) return RedirectToAction(
+                    nameof(ProductIndex));
+            }
+
+            return View(model);
+        }
+
+
+        public async Task<IActionResult> ProductDelete(long id)
+        {
+            var model = await _productService.FindProductById(id);
+            if (model != null) return View(model);
+            return NotFound();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> ProductDelete(ProductModel model)
+        {
+            var response = await _productService.DeleteProductById(model.Id);
+
+            if(response) return RedirectToAction(nameof(ProductIndex));
             return View(model);
         }
 

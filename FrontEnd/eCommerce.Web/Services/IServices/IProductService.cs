@@ -12,6 +12,6 @@ namespace eCommerce.Web.Services.IServices
 
         Task<ProductModel> UpdateProduct(ProductModel model);
 
-        Task<bool> DeleteProduct(long id);
+        Task<bool> DeleteProductById(long id);
     }
 }
