@@ -1,5 +1,4 @@
-
-namespace foo.Pages.Logout;
+namespace eCommerce.IdentityServer.Views.Account.Logout;
 
 public class LogoutOptions
 {

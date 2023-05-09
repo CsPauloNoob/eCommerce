@@ -1,7 +1,7 @@
 // Copyright (c) Duende Software. All rights reserved.
 // See LICENSE in the project root for license information.
 
-namespace foo.Pages.Ciba;
+namespace eCommerce.IdentityServer.Views.Ciba;
 
 public class InputModel
 {

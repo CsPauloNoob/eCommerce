@@ -7,10 +7,10 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace foo.Pages.Ciba;
+namespace eCommerce.IdentityServer.Views.Ciba;
 
 [Authorize]
-[SecurityHeadersAttribute]
+[SecurityHeaders]
 public class Consent : PageModel
 {
     private readonly IBackchannelAuthenticationInteractionService _interaction;
@@ -28,7 +28,7 @@ public class Consent : PageModel
     }
 
     public ViewModel View { get; set; }
-        
+
     [BindProperty]
     public InputModel Input { get; set; }
 
@@ -187,7 +187,7 @@ public class Consent : PageModel
     public ScopeViewModel CreateScopeViewModel(ParsedScopeValue parsedScopeValue, ApiScope apiScope, bool check)
     {
         var displayName = apiScope.DisplayName ?? apiScope.Name;
-        if (!String.IsNullOrWhiteSpace(parsedScopeValue.ParsedParameter))
+        if (!string.IsNullOrWhiteSpace(parsedScopeValue.ParsedParameter))
         {
             displayName += ":" + parsedScopeValue.ParsedParameter;
         }

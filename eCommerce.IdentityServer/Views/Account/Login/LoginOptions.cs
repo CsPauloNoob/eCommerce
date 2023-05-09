@@ -1,4 +1,4 @@
-namespace foo.Pages.Login;
+namespace eCommerce.IdentityServer.Views.Account.Login;
 
 public class LoginOptions
 {

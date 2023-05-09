@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace foo.Pages.Ciba;
+namespace eCommerce.IdentityServer.Views.Ciba;
 
 [SecurityHeaders]
 [Authorize]

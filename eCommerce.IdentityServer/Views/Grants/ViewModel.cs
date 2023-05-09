@@ -1,4 +1,4 @@
-namespace foo.Pages.Grants;
+namespace eCommerce.IdentityServer.Views.Grants;
 
 public class ViewModel
 {

@@ -1,4 +1,4 @@
-namespace foo.Pages.Device;
+namespace eCommerce.IdentityServer.Views.Device;
 
 public class InputModel
 {

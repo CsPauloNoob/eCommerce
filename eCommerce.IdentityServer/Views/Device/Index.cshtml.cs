@@ -4,13 +4,13 @@ using Duende.IdentityServer.Extensions;
 using Duende.IdentityServer.Models;
 using Duende.IdentityServer.Services;
 using Duende.IdentityServer.Validation;
-using foo.Pages.Consent;
+using eCommerce.IdentityServer.Views.Consent;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Options;
 
-namespace foo.Pages.Device;
+namespace eCommerce.IdentityServer.Views.Device;
 
 [SecurityHeaders]
 [Authorize]
@@ -40,7 +40,7 @@ public class Index : PageModel
 
     public async Task<IActionResult> OnGet(string userCode)
     {
-        if (String.IsNullOrWhiteSpace(userCode))
+        if (string.IsNullOrWhiteSpace(userCode))
         {
             View = new ViewModel();
             Input = new InputModel();
@@ -56,7 +56,8 @@ public class Index : PageModel
             return Page();
         }
 
-        Input = new InputModel { 
+        Input = new InputModel
+        {
             UserCode = userCode,
         };
 

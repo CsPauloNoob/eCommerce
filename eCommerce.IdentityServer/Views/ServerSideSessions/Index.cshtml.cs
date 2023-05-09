@@ -4,7 +4,7 @@ using Duende.IdentityServer.Stores;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace foo.Pages.ServerSideSessions
+namespace eCommerce.IdentityServer.Views.ServerSideSessions
 {
     public class IndexModel : PageModel
     {
@@ -46,7 +46,8 @@ namespace foo.Pages.ServerSideSessions
 
         public async Task<IActionResult> OnPost()
         {
-            await _sessionManagementService.RemoveSessionsAsync(new RemoveSessionsContext { 
+            await _sessionManagementService.RemoveSessionsAsync(new RemoveSessionsContext
+            {
                 SessionId = SessionId,
             });
             return RedirectToPage("/ServerSideSessions/Index", new { Token, Filter, Prev });

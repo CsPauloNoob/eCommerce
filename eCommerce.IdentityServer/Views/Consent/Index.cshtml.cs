@@ -3,15 +3,16 @@ using Duende.IdentityServer.Extensions;
 using Duende.IdentityServer.Models;
 using Duende.IdentityServer.Services;
 using Duende.IdentityServer.Validation;
+using eCommerce.IdentityServer.Views;
 using IdentityModel;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace foo.Pages.Consent;
+namespace eCommerce.IdentityServer.Views.Consent;
 
 [Authorize]
-[SecurityHeadersAttribute]
+[SecurityHeaders]
 public class Index : PageModel
 {
     private readonly IIdentityServerInteractionService _interaction;
@@ -29,7 +30,7 @@ public class Index : PageModel
     }
 
     public ViewModel View { get; set; }
-        
+
     [BindProperty]
     public InputModel Input { get; set; }
 
@@ -193,7 +194,7 @@ public class Index : PageModel
     public ScopeViewModel CreateScopeViewModel(ParsedScopeValue parsedScopeValue, ApiScope apiScope, bool check)
     {
         var displayName = apiScope.DisplayName ?? apiScope.Name;
-        if (!String.IsNullOrWhiteSpace(parsedScopeValue.ParsedParameter))
+        if (!string.IsNullOrWhiteSpace(parsedScopeValue.ParsedParameter))
         {
             displayName += ":" + parsedScopeValue.ParsedParameter;
         }

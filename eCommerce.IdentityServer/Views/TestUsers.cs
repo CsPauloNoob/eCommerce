@@ -8,7 +8,7 @@ using System.Text.Json;
 using Duende.IdentityServer;
 using Duende.IdentityServer.Test;
 
-namespace foo;
+namespace eCommerce.IdentityServer.Views;
 
 public class TestUsers
 {
@@ -23,7 +23,7 @@ public class TestUsers
                 postal_code = 69118,
                 country = "Germany"
             };
-                
+
             return new List<TestUser>
             {
                 new TestUser
