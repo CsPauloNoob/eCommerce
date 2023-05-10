@@ -1,4 +1,5 @@
 using eCommerce.IdentityServer.Configuration;
+using eCommerce.IdentityServer.Initializer;
 using eCommerce.IdentityServer.Model;
 using eCommerce.IdentityServer.Model.Context;
 using Microsoft.AspNetCore.Identity;
@@ -19,6 +20,8 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
     .AddEntityFrameworkStores<MySQLContext>()
     .AddDefaultTokenProviders();
 
+builder.Services.AddScoped<IDbInitializer, DbInitializer>();
+
 builder.Services.AddIdentityServer(options =>
 {
     options.Events.RaiseErrorEvents = true;
@@ -35,6 +38,8 @@ builder.Services.AddIdentityServer(options =>
 
 var app = builder.Build();
 
+var initializer = app.Services.CreateScope().ServiceProvider.GetRequiredService<IDbInitializer>();
+
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
@@ -49,6 +54,8 @@ app.UseStaticFiles();
 app.UseRouting();
 app.UseIdentityServer();
 app.UseAuthorization();
+
+initializer.Initialize();
 
 app.MapControllerRoute(
     name: "default",

@@ -6,7 +6,7 @@ namespace eCommerce.IdentityServer.Configuration
     public static class IdentityConfiguration
     {
         public const string Admin = "Admin";
-        public const string Customer = "Customer";
+        public const string Client = "Client";
 
         public static IEnumerable<IdentityResource> IdentityResources =>
             new List<IdentityResource>
@@ -40,8 +40,8 @@ namespace eCommerce.IdentityServer.Configuration
                     ClientId = "ecommerce",
                     ClientSecrets = {new Secret("TheSuperSecret_SHA".Sha256())},
                     AllowedGrantTypes = GrantTypes.Code,
-                    RedirectUris = {"http://localhost:11539/signin-oidc"},
-                    PostLogoutRedirectUris = {"http://localhost:11539/signout-callback-oidc"},
+                    RedirectUris = {"https://localhost:4440/signin-oidc"},
+                    PostLogoutRedirectUris = {"https://localhost:4440/signout-callback-oidc"},
                     AllowedScopes = new List<string>
                     {
                         IdentityServerConstants.StandardScopes.OpenId,
