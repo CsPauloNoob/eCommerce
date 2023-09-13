@@ -31,12 +31,13 @@ namespace eCommerce.IdentityServer.Initializer
             _role.CreateAsync(new IdentityRole(
                 IdentityConfiguration.Client)).GetAwaiter().GetResult();
 
+            # region Criação de Admin
             ApplicationUser admin = new ApplicationUser()
             {
                 UserName = "Paulo-admin",
-                Email = "ps616131@gmail.com",
+                Email = "fake_email@gmail.com",
                 EmailConfirmed = true,
-                PhoneNumber = "+5597988034643",
+                PhoneNumber = "9999999",
                 FirstName = "Paulo",
                 LastName = "Admin",
             };
@@ -52,15 +53,18 @@ namespace eCommerce.IdentityServer.Initializer
                 new Claim(JwtClaimTypes.FamilyName, admin.LastName),
                 new Claim(JwtClaimTypes.Role, IdentityConfiguration.Admin)
             }).Result;
-            
+            #endregion
+
+
+            #region  Criação de client
             ApplicationUser client = new ApplicationUser()
             {
                 UserName = "Paulo-client",
-                Email = "ps616131@gmail.com",
+                Email = "fake_email@gmail.com",
                 EmailConfirmed = true,
-                PhoneNumber = "+5597988034643",
+                PhoneNumber = "9999999",
                 FirstName = "Paulo",
-                LastName = "client",
+                LastName = "Client",
             };
 
             _user.CreateAsync(client, "Motorolaxt#1515").GetAwaiter().GetResult();
@@ -74,6 +78,8 @@ namespace eCommerce.IdentityServer.Initializer
                 new Claim(JwtClaimTypes.FamilyName, client.LastName),
                 new Claim(JwtClaimTypes.Role, IdentityConfiguration.Client)
             }).Result;
+
+            #endregion
         }
     }
 }
