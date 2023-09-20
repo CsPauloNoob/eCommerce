@@ -40,7 +40,7 @@ namespace eCommerce.IdentityServer.Configuration
                     ClientId = "ecommerce",
                     ClientSecrets = {new Secret("TheSuperSecret_SHA".Sha256())},
                     AllowedGrantTypes = GrantTypes.Code,
-                    RedirectUris = {"https://localhost:4440/signin-oidc"},
+                    RedirectUris = {"https://localhost:4430/signin-oidc"},
                     PostLogoutRedirectUris = {"https://localhost:4440/signout-callback-oidc"},
                     AllowedScopes = new List<string>
                     {
